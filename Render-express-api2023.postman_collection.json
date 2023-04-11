@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "b40a354a-b6c8-4fcc-967d-eaa42c3ec9b8",
+		"name": "Render-express-api2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10359384"
+	},
+	"item": [
+		{
+			"name": "creaatepost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\":\"lolololo\",\n    \"content\":\"多壁球不好玩ddddddd\",\n    \"image\":\"12lddddd\",\n    \"tags\":\"cccccc\",\n    \"type\":\"group\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://express2023sp.onrender.com/api/posts",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPosts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://express2023sp.onrender.com/api/posts",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
