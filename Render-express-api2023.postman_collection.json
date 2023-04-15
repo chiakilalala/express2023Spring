@@ -7,13 +7,16 @@
 	},
 	"item": [
 		{
-			"name": "creaatepost",
+			"name": "getPosts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n   \"name\":\"lolololo\",\n    \"content\":\"多壁球不好玩ddddddd\",\n    \"image\":\"12lddddd\",\n    \"tags\":\"cccccc\",\n    \"type\":\"group\"\n    \n}",
+					"raw": "{\n   \"name\":\"lolololo\",\n    \"content\":\"miyaki\",\n    \"image\":\"eeeee\",\n    \"tags\":\"cccccc\",\n    \"type\":\"group\"\n    \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,7 +24,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://express2023sp.onrender.com/api/posts",
+					"raw": "https://express2023sp.onrender.com/posts",
 					"protocol": "https",
 					"host": [
 						"express2023sp",
@@ -29,7 +32,6 @@
 						"com"
 					],
 					"path": [
-						"api",
 						"posts"
 					]
 				}
@@ -37,12 +39,21 @@
 			"response": []
 		},
 		{
-			"name": "getPosts",
+			"name": "createPost",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\":\"64382fea6b6d068c2256d886\",\n    \"content\":\"jifffff\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "https://express2023sp.onrender.com/api/posts",
+					"raw": "https://express2023sp.onrender.com/posts",
 					"protocol": "https",
 					"host": [
 						"express2023sp",
@@ -50,8 +61,58 @@
 						"com"
 					],
 					"path": [
-						"api",
 						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePost",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"content\": \"hello\",\n     \"likes\":122222222\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://express2023sp.onrender.com/posts/643a3cf088f81bbbff6c4543",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts",
+						"643a3cf088f81bbbff6c4543"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePost",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://express2023sp.onrender.com/posts/643a33cf1769dddc1de9364c",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts",
+						"643a33cf1769dddc1de9364c"
 					]
 				}
 			},
