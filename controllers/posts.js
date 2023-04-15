@@ -1,79 +1,80 @@
-const successHandler = require('../service/successHandler');
-const errorHandler = require('../service/errorHandler');
-const Post = require('../models/posts');
-const User = require('../models/users');
-const posts = {
+const Post = require("../models/post");
+const User = require("../models/users");
+const handleError = require("../service/handleError");
+const handleSuccess = require("../service/handleSuccess");
+
+const post = {
   async getPosts(req, res) {
-    // const postsData = await Post.find().populate({
-    //   path: "user",
-    //   select: "name photo" // 顯示user 裡的特定欄位
-    // });
-    const timeSort = req.query.timeSort == "asc" ? "createdAt" : "-createdAt";
-    const q = req.query.q !== undefined ? { "content": new RegExp(req.query.q) } : {};
-    const postsData = await Post.find(q).populate({
-      path: 'name',
-      select: 'name photo'
-    }).sort(timeSort);
-    successHandler(res, postsData);
-  },
-  async createPosts(req, res) {
     try {
-      const data = req.body;
-      if (data.content && data.name) {
-        const newPost = await Post.create({
-          name: data.name,
-          content: data.content,
-          image: data.image,
-          likes: data.likes
-        });
-        successHandler(res, newPost);
-      } else {
-        errorHandler(res, '資料未填寫完成');
-      }
-    } catch (err) {
-      errorHandler(res, err);
+      //http://127.0.0.1:3000/posts?q=day&sort=desc
+      const q = req.query.q != undefined ? { content: new RegExp(req.query.q) } : {};
+
+      const sort = req.query.sort == "asc" ? "createdAt" : "-createdAt";
+      // asc 遞增(由小到大，由舊到新) createdAt ;
+      // desc 遞減(由大到小、由新到舊) "-createdAt"
+
+      const allPosts = await Post.find(q).populate({        
+          path: "user",
+          select: "name photo",
+        })
+        .sort(sort);
+      handleSuccess(res, allPosts);
+    } catch (error) {
+      handleError(res, error);
     }
   },
-  async patchPost(req, res) {
+  async createPost(req, res) {
     try {
-      const { id } = req.params;
-      const data = req.body;
-      if (!data.content || !data.name) {
-        errorHandler(res, '資料未填寫完成');
+      const { user, content, image, createdAt } = req.body;
+    
+      if (content !== undefined) {
+        const newPost = await Post.create({
+          user,
+          content,
+          image,
+          createdAt,
+        });
+
+        handleSuccess(res, newPost);
       } else {
-        const editPost = {
-          name: data.name,
+        handleError(res);
+      }
+    } catch (error) {
+      handleError(res, error);
+    }
+  },
+  async updatePost(req, res) {
+    try {
+      const data = req.body;
+      const id = req.params.id;
+      console.log("id:" + id);
+
+      if (data.content!== undefined) {
+        const updatePost = await Post.findByIdAndUpdate(id, {
           content: data.content,
           image: data.image,
-          likes: data.likes
-        }
-        const thePost = await Post.findByIdAndUpdate(id, editPost, { new: true });
-        if (thePost) {
-          successHandler(res, thePost);
-        } else {
-          errorHandler(res, 'id 不存在');
-        }
+          name: data.name,
+          likes: data.likes,
+        });
+        handleSuccess(res, updatePost);
+      } else {
+        handleError(res);
       }
-    } catch (err) {
-      errorHandler(res, err);
+    } catch (error) {
+      handleError(res, error);
     }
   },
   async deletePost(req, res) {
     try {
-      const { id } = req.params;
-      const thePost = await Post.findByIdAndDelete(id);
-      if (thePost) {
-        successHandler(res, thePost);
-      } else {
-        errorHandler(res, 'id 不存在');
-      }
-    } catch(err) {
-      errorHandler(res.err)
+      const id = req.params.id;
+      console.log(id);
+      const deletePost = await Post.findByIdAndDelete(id);
+
+      handleSuccess(res, deletePost);
+    } catch (error) {
+      handleError(res, error);
     }
   },
-  async deletePosts(req, res) {
-    await Post.deleteMany({});
-  }
-}
+};
 
-module.exports = posts;
+module.exports = post;

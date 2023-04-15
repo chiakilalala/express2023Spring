@@ -5,8 +5,9 @@ const logger = require('morgan');
 const cors = require('cors');
 
 // router
-const postsRouter = require('./routes/posts');
-const usersRouter = require('./routes/users');
+var indexRouter = require("./routes/index");
+var postsRouter = require("./routes/posts");
+var usersRouter = require("./routes/users");
 var app = express();
 
 require('./connections');
@@ -22,8 +23,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-app.use('/posts', postsRouter);
-app.use('/users', usersRouter);
+
+app.use("/", indexRouter);
+app.use("/posts", postsRouter);
+app.use("/users", usersRouter);
 
 // 同步程式出錯
 process.on('uncaughtException', err => {
