@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "b40a354a-b6c8-4fcc-967d-eaa42c3ec9b8",
+		"name": "Render-express-api2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10359384"
+	},
+	"item": [
+		{
+			"name": "getPosts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\":\"lolololo\",\n    \"content\":\"miyaki\",\n    \"image\":\"eeeee\",\n    \"tags\":\"cccccc\",\n    \"type\":\"group\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://express2023sp.onrender.com/posts",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\":\"64382fea6b6d068c2256d886\",\n    \"content\":\"jifffff\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://express2023sp.onrender.com/posts",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePost",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n     \"content\": \"hello\",\n     \"likes\":122222222\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://express2023sp.onrender.com/posts/643a3cf088f81bbbff6c4543",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts",
+						"643a3cf088f81bbbff6c4543"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePost",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://express2023sp.onrender.com/posts/643a33cf1769dddc1de9364c",
+					"protocol": "https",
+					"host": [
+						"express2023sp",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts",
+						"643a33cf1769dddc1de9364c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

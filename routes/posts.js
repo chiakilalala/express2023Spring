@@ -1,19 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const postControllers = require("../controllers/posts");
 
-const PostControllers = require('../controller/posts')
-
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-
-
-router.get('/',  PostControllers.getPosts) 
-
-
-
-router.post('/',PostControllers.createdPosts) 
-
+router.get("/", postControllers.getPosts);
+router.post("/", postControllers.createPost);
+router.patch("/:id", postControllers.updatePost);
+router.delete("/:id", postControllers.deletePost);
 
 module.exports = router;

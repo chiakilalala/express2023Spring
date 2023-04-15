@@ -1,15 +1,12 @@
-
-const handleError = (res, err) => {
-
-  let message = '';
-  if (err) {
-    message = err.message;
+const handleError = (res, error) => {
+  let message = "";
+  if (error) {
+    message = error.message;
   } else {
-    message = "欄位未填寫正確或無此 id";
+    message = "欄位未填寫正確或無此ID";
   }
-  res.status(400).send({
-    status:true,
-   message
-  }).end();
-}
+
+  res.send({ status: false, message: message }).end();
+};
+
 module.exports = handleError;

@@ -2,6 +2,7 @@
 /04-VUE-CLI-Router-Components/vue-test-mike/node_modules
 
 .DS_Store
+.env
 node_modules
 config.env
 /dist
