@@ -1,5 +1,5 @@
 
-const handleError = (res, err) => {
+const errorHandler = (res, err) => {
 
   let message = '';
   if (err) {
@@ -12,4 +12,4 @@ const handleError = (res, err) => {
    message
   }).end();
 }
-module.exports = handleError;
+module.exports = errorHandler;

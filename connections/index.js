@@ -1,7 +1,8 @@
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-dotenv.config({path: './config.env'});
+//dotenv.config({path: __dirname + '/../config.env'});
+dotenv.config({path: "./config.env"});
 const DB = process.env.DATABASE.replace(
   '<password>',
   process.env.DATABASE_PASSWORD
@@ -9,4 +10,5 @@ const DB = process.env.DATABASE.replace(
 
 mongoose
   .connect(DB)
-  .then(() => console.log('資料庫連接成功'));
+  .then(() => console.log('資料庫連接成功'))
+  .catch((err) => console.log(err));
