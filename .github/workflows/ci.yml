@@ -28,9 +28,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - name: Deploy to Render
-        uses: render-examples/github-actions-deploy@v1.0.0
-        env:
-          RENDER_ACCOUNT_ID: ${{ secrets.RENDER_ACCOUNT_ID }}
-          RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
-          RENDER_PROJECT_ID: ${{ secrets.RENDER_PROJECT_ID }}
+      uses: render-examples/github-actions-deploy@v1.0.0
+      env:
+        RENDER_ACCOUNT_ID: ${{ secrets.RENDER_ACCOUNT_ID }}
+        RENDER_TOKEN: ${{ secrets.RENDER_TOKEN }}
+        RENDER_PROJECT_ID: ${{ secrets.RENDER_PROJECT_ID }}
     
